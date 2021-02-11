@@ -1,7 +1,6 @@
 package com.currancytrading.documents;
 
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -12,7 +11,6 @@ import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
 import org.springframework.data.couchbase.core.mapping.id.GenerationStrategy;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Document
 @Getter

@@ -1,4 +1,4 @@
-/*package com.currancytrading.entity;
+package com.currancytrading.documents;/*package com.currancytrading.entity;
 
 import com.couchbase.client.java.repository.annotation.Field;
 import com.couchbase.client.java.annotation.Id;
