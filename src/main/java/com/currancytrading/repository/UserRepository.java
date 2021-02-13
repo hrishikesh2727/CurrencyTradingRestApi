@@ -15,6 +15,7 @@ public interface UserRepository extends CrudRepository<User, String> {
 
     Optional<User> findDistinctUserByUserNameOrPassword(String userName, String password);
     List<User> findByuserName(String userName);
+    List<User> findByEmail(String Email);
 
     /*@Query("Select meta().id as id, username from  #{#n1ql.bucket} where #{#n1ql.filter} " +
             " and userName = $1 and password = $2")*/
