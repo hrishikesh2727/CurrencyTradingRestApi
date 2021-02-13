@@ -9,13 +9,12 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;
 
-@N1qlPrimaryIndexed
-@N1qlSecondaryIndexed(indexName = "User")
+
 public interface UserRepository extends CrudRepository<User, String> {
 
     Optional<User> findDistinctUserByUserNameOrPassword(String userName, String password);
     List<User> findByuserName(String userName);
-    List<User> findByEmail(String Email);
+    List<User> findByEmail(String email);
 
     /*@Query("Select meta().id as id, username from  #{#n1ql.bucket} where #{#n1ql.filter} " +
             " and userName = $1 and password = $2")*/

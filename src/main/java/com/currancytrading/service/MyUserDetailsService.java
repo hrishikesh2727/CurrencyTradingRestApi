@@ -18,8 +18,8 @@ public class MyUserDetailsService implements UserDetailsService {
     UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        List<com.currancytrading.documents.User> users =userRepository.findByEmail(email);
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        List<com.currancytrading.documents.User> users =userRepository.findByuserName(userName);
 
         User newUser = null;
         if(users != null && users.stream().count() > 0) {
