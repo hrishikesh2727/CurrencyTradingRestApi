@@ -1,7 +1,10 @@
 package com.currancytrading.documents;
 
+import com.couchbase.client.core.deps.com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.couchbase.core.mapping.Document;
 import org.springframework.data.couchbase.core.mapping.Field;
+
+import java.time.LocalDate;
 
 @Document
 
@@ -19,6 +22,9 @@ public class User extends BaseDocument {
     private String password;
     @Field
     private boolean active;
+    @Field
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate birthday;
 
 
     public String getUserName() {
