@@ -10,8 +10,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;
 
-//@ViewIndexed(designDoc="user")
-//@N1qlSecondaryIndexed(indexName="userSecondaryIndex")
+@ViewIndexed(designDoc="user")
+@N1qlSecondaryIndexed(indexName="userSecondaryIndex")
 public interface UserRepository extends CrudRepository<User, String> {
 
     Optional<User> findDistinctUserByUserNameOrPassword(String userName, String password);
