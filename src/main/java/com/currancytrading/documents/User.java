@@ -7,7 +7,6 @@ import org.springframework.data.couchbase.core.mapping.Field;
 import java.time.LocalDate;
 
 @Document
-
 public class User extends BaseDocument {
 
     @Field

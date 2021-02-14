@@ -2,9 +2,7 @@ package com.currancytrading.documents;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.*;
 import org.springframework.data.couchbase.core.mapping.Document;
 import org.springframework.data.couchbase.core.mapping.Field;
 import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
@@ -23,9 +21,11 @@ public class BaseDocument {
     private String  id;
 
     @Field
+    @CreatedBy
     private String createdUserId;
 
     @Field
+    @LastModifiedBy
     private String modifiedUserId;
 
     @Field
@@ -35,6 +35,9 @@ public class BaseDocument {
     @Field
     @LastModifiedDate
     private Date modifiedTimestamp;
+
+    @Version
+    private long version;
 
     public String getId() {
         return id;

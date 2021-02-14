@@ -3,13 +3,15 @@ package com.currancytrading.repository;
 import com.currancytrading.documents.User;
 import org.springframework.data.couchbase.core.query.N1qlPrimaryIndexed;
 import org.springframework.data.couchbase.core.query.N1qlSecondaryIndexed;
+import org.springframework.data.couchbase.core.query.ViewIndexed;
 import org.springframework.data.couchbase.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-
+//@ViewIndexed(designDoc="user")
+//@N1qlSecondaryIndexed(indexName="userSecondaryIndex")
 public interface UserRepository extends CrudRepository<User, String> {
 
     Optional<User> findDistinctUserByUserNameOrPassword(String userName, String password);

@@ -29,7 +29,7 @@ public class UserController {
         return ResponseEntity.ok(userRepository.findAll());
     }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public ResponseEntity<?> addUser(@RequestBody User newUser){
         return ResponseEntity.ok(userRepository.save(newUser));
     }
