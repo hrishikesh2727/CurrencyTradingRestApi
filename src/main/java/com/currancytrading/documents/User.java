@@ -23,7 +23,7 @@ public class User extends BaseDocument {
     @Field
     private boolean active;
     @Field
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone="GMT")
     private LocalDate birthday;
 
 
@@ -65,5 +65,21 @@ public class User extends BaseDocument {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 }
