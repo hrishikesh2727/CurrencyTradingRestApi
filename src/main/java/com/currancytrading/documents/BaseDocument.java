@@ -21,6 +21,9 @@ public class BaseDocument {
     private String  id;
 
     @Field
+    private boolean isDelete;
+
+    @Field
     @CreatedBy
     private String createdUserId;
 
