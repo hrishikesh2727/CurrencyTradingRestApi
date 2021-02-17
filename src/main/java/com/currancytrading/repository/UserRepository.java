@@ -1,7 +1,6 @@
 package com.currancytrading.repository;
 
 import com.currancytrading.documents.User;
-import org.springframework.data.couchbase.core.query.N1qlPrimaryIndexed;
 import org.springframework.data.couchbase.core.query.N1qlSecondaryIndexed;
 import org.springframework.data.couchbase.core.query.ViewIndexed;
 import org.springframework.data.couchbase.repository.Query;
