@@ -15,14 +15,17 @@ import java.util.List;
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        List<com.currancytrading.documents.User> users =userRepository.findByuserName(userName);
+        com.currancytrading.documents.User userObj = new com.currancytrading.documents.User();
+        userObj.setUserName(userName);
+        Iterable<com.currancytrading.documents.User> users =userService.findByUserName(userObj);
 
         User newUser = null;
-        if(users != null && users.stream().count() > 0) {
+        if(users != null)
+        {
             int i = 0;
             for (com.currancytrading.documents.User user : users) {
                 if (i == 0) {
@@ -31,6 +34,7 @@ public class MyUserDetailsService implements UserDetailsService {
                 i++;
             }
         }
+
         return newUser;
     }
 }
