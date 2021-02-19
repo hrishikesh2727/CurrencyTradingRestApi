@@ -13,15 +13,15 @@ import java.util.Optional;
 @N1qlSecondaryIndexed(indexName="userSecondaryIndex")
 public interface UserRepository extends CrudRepository<User, String> {
 
-    Optional<User> findDistinctUserByUserNameOrPassword(String userName, String password);
-    List<User> findByuserName(String userName);
-    List<User> findByEmail(String email);
+    Iterable<User> findDistinctUserByUserNameOrPassword(String userName, String password);
+    Iterable<User> findByuserName(String userName);
+    Iterable<User> findByEmail(String email);
 
     /*@Query("Select meta().id as id, username from  #{#n1ql.bucket} where #{#n1ql.filter} " +
             " and userName = $1 and password = $2")*/
     @Query("#{#n1ql.selectEntity} WHERE #{#n1ql.filter} AND #{[0]} = $2")
-    public Optional<User> findUsersByDynamicCriteria(String criteriaField, Object criteriaValue);
+    Iterable<User> findUsersByDynamicCriteria(String criteriaField, Object criteriaValue);
 
-    Optional<User> findByuserNameAndPassword(String userName, String password);
+    Iterable<User> findByuserNameAndPassword(String userName, String password);
 
 }

@@ -1,12 +1,12 @@
 package com.currancytrading.controller;
 
 import com.currancytrading.documents.User;
-import com.currancytrading.repository.UserRepository;
+import com.currancytrading.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 
 @CrossOrigin
 @RestController
@@ -14,29 +14,21 @@ import java.util.ArrayList;
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public ResponseEntity<?> getHello(){
-        String displayString = "Welcome Couch bases";
-        return ResponseEntity.ok(displayString);
-    }
-
-    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getUsers(){
-        Iterable<User> list = new ArrayList<User>();
-        list = userRepository.findAll();
-        return ResponseEntity.ok(userRepository.findAll());
+        return ResponseEntity.ok(userService.getAllUser());
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    @RequestMapping(value = "/signup", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addUser(@RequestBody User newUser){
-        return ResponseEntity.ok(userRepository.save(newUser));
+        return ResponseEntity.ok(userService.addUser(newUser));
     }
 
-    @RequestMapping(value = "/findUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/findUser", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> findUser(@RequestBody User newUser){
-        return ResponseEntity.ok(userRepository.findByuserNameAndPassword(newUser.getUserName(),newUser.getPassword()));
+        return ResponseEntity.ok(userService.findByUserNameAndPassword(newUser));
     }
 
 }
