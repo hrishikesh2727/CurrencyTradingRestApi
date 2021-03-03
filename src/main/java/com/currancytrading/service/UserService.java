@@ -51,4 +51,19 @@ public class UserService {
     public Iterable<User> findByUserNameAndPassword(User user){
         return userRepository.findByuserNameAndPassword(user.getUserName(),user.getPassword());
     }
+
+    public ResponseEntity<?> updateUserPassword(User user){
+        if(!userRepository.findByuserName(user.getUserName()).iterator().hasNext()) {
+            return new ResponseEntity<>(
+                    "Please enter the valid Email Id.",
+                    HttpStatus.BAD_REQUEST);
+        }
+        else{
+            User findUser =  userRepository.findByuserName(user.getUserName()).iterator().next();
+            findUser.setPassword(user.getPassword());
+            return new ResponseEntity<>(
+                    userRepository.save(findUser),
+                    HttpStatus.ACCEPTED);
+        }
+    }
 }

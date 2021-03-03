@@ -31,4 +31,9 @@ public class UserController {
         return ResponseEntity.ok(userService.findByUserNameAndPassword(newUser));
     }
 
+    @RequestMapping(value = "/resetPassword", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> resetPassword(@RequestBody User newUser){
+        return ResponseEntity.ok(userService.updateUserPassword(newUser));
+    }
+
 }
