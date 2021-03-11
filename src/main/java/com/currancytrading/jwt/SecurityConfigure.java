@@ -80,7 +80,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/api/currency-trading/login", "/api/currency-trading/signup");
+        web.ignoring().antMatchers("/api/currency-trading/login", "/api/currency-trading/signup", "/api/currency-trading/resetPassword");
     }
 
 }
