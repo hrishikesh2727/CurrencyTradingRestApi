@@ -24,6 +24,7 @@ speed-measure-plugin*.json
 *.sublime-workspace
 currancy-trading.iml
 
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
